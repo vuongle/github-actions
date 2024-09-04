@@ -4,9 +4,11 @@
 name: Build and push Docker image to Docker Hub
 
 on:
-  push:
+  pull_request:
     branches:
-      - features/001_jest_report
+      - master
+    types: [opened, reopened]
+  # workflow_dispatch: only show "Run workflow" button in master/main branch
   workflow_dispatch:
 
 jobs:
