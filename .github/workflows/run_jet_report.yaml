@@ -9,7 +9,7 @@ name: Run Jest Coverage Report
 on:
   pull_request:
     branches:
-      - main
+      - master
     types: [opened, reopened]
 
 jobs:
@@ -24,3 +24,5 @@ jobs:
       - uses: actions/checkout@v4
       - run: npm install
       - uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          working-directory: github-action-basic
