@@ -4,9 +4,10 @@
 name: Build App for different platforms
 
 on:
-  push:
+  pull_request:
     branches:
-      - features/001_jest_report
+      - master
+    types: [opened, reopened]
 
 jobs:
   build-app:
