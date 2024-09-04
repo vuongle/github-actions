@@ -5,6 +5,9 @@ name: Build and push Docker image to Docker Hub
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - features/001_jest_report
 
 jobs:
   docker:
