@@ -1,0 +1,31 @@
+# This example show how to:
+#   - use matrix for concurrent jobs. Used for building apps for different platforms (os and node version)
+
+name: Build App for different platforms
+
+on:
+  push:
+    branches:
+      - features/001_jest_report
+
+jobs:
+  build-app:
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+        node: [16, 18]
+    runs-on: ${{matrix.os}}
+    defaults:
+      run:
+        working-directory: github-action-basic
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{matrix.node}}
+      - run: npm install
+      - run: node cli.js build --os ${{matrix.os}} --node ${{matrix.node}} > app-${{matrix.os}}-${{matrix.node}}.js
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-electron
+          path: app-${{matrix.os}}-${{matrix.node}}.js
