@@ -1,0 +1,26 @@
+# This example show how to:
+#   - run workflow on pull request event
+#   - specify the working directory for a specific job
+#   - use third party github action (ex: actions/checkout@v4)
+#   - read secret values from github
+
+name: Run Jest Coverage Report
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, reopened]
+
+jobs:
+  coverage-report:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./github-action-basic
+
+    steps:
+      # Checkout the code inside the container running this workflow
+      - uses: actions/checkout@v4
+      - run: npm install
+      - uses: ArtiomTr/jest-coverage-report-action@v2
