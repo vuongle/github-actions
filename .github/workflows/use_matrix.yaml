@@ -20,6 +20,12 @@ jobs:
       run:
         working-directory: github-action-basic
     steps:
+      # use the keyword "uses" to specify the action
+      - uses: mheap/github-action-required-labels@v5
+        with:
+          mode: exactly
+          count: 0
+          labels: "do not build"
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
