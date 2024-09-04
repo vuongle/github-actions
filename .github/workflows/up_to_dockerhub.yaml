@@ -34,7 +34,7 @@ jobs:
         uses: docker/build-push-action@v6
         id: docker_build
         with:
-          context: ../../github-action-basic
+          context: "{{defaultContext}}:github-action-basic"
           file: Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
