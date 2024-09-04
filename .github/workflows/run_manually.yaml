@@ -1,3 +1,7 @@
+# This example show how to:
+#   - run a workflow manually by using "workflow_dispatch" event
+#   - set an environment variable to $GITHUB_ENV
+
 name: Run Manually
 
 on:
