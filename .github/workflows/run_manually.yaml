@@ -1,0 +1,12 @@
+name: Run Manually
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job-run-manually:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "TODAY=$(date +%Y-%m-%d)" >> $GITHUB_ENV
+      - run: echo Hello World! Today is $TODAY
