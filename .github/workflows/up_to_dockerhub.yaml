@@ -4,7 +4,9 @@
 name: Build and push Docker image to Docker Hub
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - master
 
 jobs:
   docker:
